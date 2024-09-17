@@ -1,67 +1,121 @@
-level 0
-ssh bandit.labs.overthewire.org -p 2220 -l bandit0 is used to login 
-Password is ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
-level 1
-I tried cat - twice which gave no result. Then I chekced the instructions that said I must use cat < -
-Password is 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
-level2
-Used the Tab key to auto-completes the filename. So this level was not a problem.
-Password is MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
-level3
-![image](https://github.com/user-attachments/assets/8ebb2978-f1ab-4ae3-a60b-48cefd2179fa)
-Password is 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
-level 4
-After having learnt that the The file * command determines the type of every file, I used it but just like at level 1, the file names here also started with a dash so the command is going to be slightly different 
-![image](https://github.com/user-attachments/assets/44e900f1-5a14-45e8-ae14-4421642cd666)
-Password is 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
-level5
-![image](https://github.com/user-attachments/assets/555cf1d1-37a6-4436-abf6-32d40d61913c)
-password is HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
-level 6
-Since the task said that the The password is stored somewhere on the server, I changed
-find . -type f -size 33c -user bandit7 -group bandit6 to find . -size 33c -user bandit7 -group bandit6 so that the search is not restricted to files only.
-After knowing what 'somewhere on the server' actually meant, I tried find / -size 33c -user bandit7 -group bandit6 to start searching from the root directory but this gave me a really long list of permission denied errors (along with the filename). Finally I found the password using find / -user bandit7 -group bandit6 -size 33c 2>/dev/null which redirected the error messages and returned only the output file 
-![image](https://github.com/user-attachments/assets/8f5aa7ab-b52b-4cac-a863-48edc4369a09)
-password is morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
-level 7
-Came across the term 'grep' while working on Level 5 and was confused between find and grep. But now the difference is clear 
-![image](https://github.com/user-attachments/assets/a6bee2d2-ac8d-4841-a639-c9b31b22553f)
-Password is dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
-level 8
-first sort the data, because uniq only works on consecutive duplicate lines.
-Used command sort data.txt | uniq -u Password is 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
-level 9
-The strings command extracts printable strings from the files 
-![image](https://github.com/user-attachments/assets/15df29b4-0c4e-4086-afb1-1c70b6a03ee8)
-The password is FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
-level 10
-![image](https://github.com/user-attachments/assets/b3e67511-70f2-4550-b3c4-06750b3803d9)
-Password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
-level 11
-password is :  dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+Linux: OverTheWire
+
+Level 0:
+Username: ssh bandit0@bandit.labs.overthewire.org -p 2220
+Pw: bandit0
+Note: 2220 is the port number. Always use the ‘exit’ command to logout from one bandit
+
+Level 0 – Level 1:
+Username:  ssh bandit1@bandit.labs.overthewire.org -p 2220
+Pw: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+
+Level 2 – Level 3:
+Username: ssh bandit2@bandit.labs.overthewire.org -p 2220
+Pw: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+Note: cat spaces\ in\ this\ filename
+
+Level 3- Level 4:
+Username: ssh bandit3@bandit.labs.overthewire.org -p 2220
+Pw: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+Note: to view hidden files: ls -a/A
+
+Level 4- Level 5:
+Username: ssh bandit4@bandit.labs.overthewire.org -p 2220
+Pw: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+Note: when using special characters, use the forward slash ‘/’ and when giving space use the backward slash ‘\’. If we want to check if the given content in a file is human readable or not, use ‘file ./<file name>’. the ‘./’ can be used if there’s any special character is there.
+
+Level 5- Level 6:
+Username: ssh bandit5@bandit.labs.overthewire.org -p 2220
+Pw: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+Note: check for all the file permissions using ‘ls -lR’. Check the file size and then narrow down your search.
+
+Level 6- Level 7:
+Username: ssh bandit6@bandit.labs.overthewire.org -p 2220
+Pw: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+Note: “/var/lib/dpkg/info/bandit7.password” is the path to the password. Use the cat command with the path to see the password.
+
+
+
+Level 7- Level 8:
+Username: ssh bandit7@bandit.labs.overthewire.org -p 2220
+Pw: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+Note: see the data.txt file which has large size, and use the cat command to view the file with the grep command the word which they have given.
+
+Level 8- Level 9:
+Username: ssh bandit8@bandit.labs.overthewire.org -p 2220
+Pw: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+Note: use the sort and the uniq -u commands (found this sol in google)
+
+Level 9- Level 10:
+Username: ssh bandit9@bandit.labs.overthewire.org -p 2220
+Pw: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+Note: strings- this command specifies human readable strings. Later use the grep command with ‘=’.
+
+
+Level 10- Level 11:
+Username: ssh bandit10@bandit.labs.overthewire.org -p 2220
+Pw:  dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
 Note: “cat data.txt | base64 -d” the base64 converts binary text representations into string texts. ‘-d’ displays in standard output.
-level 12
-password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
-here this command “ tr ‘A-Za-z’ ‘N-ZA-Mn-za-m’” the 13th letter after a is n so there is shift in letters from one to another
-level 13
-password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+
+Level 11- Level 12:
+Username: ssh bandit11@bandit.labs.overthewire.org -p 2220
+Pw: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+Note:  
+
+here this command “ tr ‘A-Za-z’ ‘N-ZA-Mn-za-m’” the 13th letter after a is n so there is shift in letters from one to another.
+
+Level 12- Level 13:
+Username: ssh bandit12@bandit.labs.overthewire.org -p 2220
+Pw: FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
 Note: mkdir used to create a new directory. cp <source> <destination> used to copy files. mv <source> <destination> moves or renames the files. Hexdumps are basically data that cannot be represented in string format so the data shown in hex values. xxd <input file> <output file> used to create hexdumps. Compression is basically reducing the size of the file without doing any damage to the information present in the file. gzip- command used to compress the file, gzip -d used to decompress the file. gzip file usually ends with .gz. 
-level 14
-password is MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+
+1.	Create a new directory using the ‘mktemp -d command’ and cd to that directory.
+2.	Change the data.txt file to the newly created directory and rename it to data to remove the .txt file extension.
+3.	Use the xxd command to convert the data into its binary equivalent.
+4.	Use the file command to see what type of data stored in file. File compressed using gzip, so use the gunzip command to decompress it.
+
+
+
+
+ 
+
+ 
+
+
+
+
+Level 13- Level 14:
+Username:
+Pw: MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
 Notes: -i keys allows only the user with the private key to access the ssh. Local host is the machine that the user is currently working on. 
-level 15
-password is 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+
+bandit13@bandit:~$ ls
+sshkey.private
+
+bandit13@bandit:~$ ssh -i sshkey.private -p 2220 bandit14@localhost
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+
+Level 14- Level 15:
+Username: ssh -I sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
+Pw: 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
 Notes: the password that we have to enter right after typing in the username is the one that we got in level 13-14. Since this is a private key we have to get the password for this key and that should be typed after accessing the local host. 
 Local host is a hostname which has the IP address ‘127.0.0.1’. Used to access network services.
 nc or netcat- command that is used to read and write data over a network. Syntax: nc <host> <port>.
-level 16
-password is : kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+
+
+Level 15- Level 16:
+Username: ssh bandit15@bandit.labs.overthewire.org -p 2220
+Pw: kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
 Notes: OpenSSL is a library for secure communication over networks. openssl s_client is the command that is used to connect to the server using SSL/TLS.
 SSL: Secure Sockets Layer
 TSL: Transport Layer Security
-To solve this level we are first connecting to the localhost server using openSSL and sending pw to this level. The server returns the password for next level
-level 17
-MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+To solve this level we are first connecting to the localhost server using openSSL and sending pw to this level. The server returns the password for next level.
+
+ 
+
+Level 16- Level 17:
+Username: ssh -i private16.key bandit17@localhost -p 2220
+Pw:MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
 imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
 Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
 DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
@@ -98,6 +152,15 @@ The file permission has to be changed to 700
 
 Now bandit17 has to be accessed
  
-level 18
-password is : x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
-Notes:we have to see all the files that are present in the home directory. there is one line which is different in both the files and the different line in the password.new file is the pw for level 18. The diff command can be used, this command gives us the difference between both the files.
+
+
+
+
+Level 17- Level 18:
+Username: ssh bandit18@bandit.labs.overthewire.org -p 2220
+Pw: x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+Notes:we have to see all the files that are present in the home directory. there is one line which is different in both the files and the different line in the password.new file is the pw for level 18. The diff command can be used, this command gives us the difference between both the files. 
+
+ 
+
+open a new terminal and type in the username for level 18. Your supposed to get the message:
